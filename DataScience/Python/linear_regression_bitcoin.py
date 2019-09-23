@@ -46,8 +46,8 @@ regression = LinearRegression()
 regression.fit(X_train, y_train)
 
 #Predecir el conjunto de test
-#y_pred = regression.predict(X_test)
-y_pred = regression.predict([[20000000000]])
+y_pred = regression.predict(X_test)
+#y_pred = regression.predict([[20000000000]])
 
 #Visualizar los resultados de entrenamiento
 plt.scatter(X_train, y_train, color = "red")
@@ -64,3 +64,12 @@ plt.title("Precio vs Volumen (Conjunto de testing)")
 plt.xlabel("Volumen")
 plt.ylabel("Precio (USD)")
 plt.show()
+
+from sklearn.metrics import mean_squared_error, r2_score
+print('Coeficiente de regresion: ', regression.coef_)
+
+print('Termino independient, osea el valor que corta al eje Y, X=0', regression.intercept_)
+
+print('Error cuadratico medio: ', mean_squared_error(y_test, y_pred))
+
+print('Estadistico R_2: ', r2_score(y_test, y_pred))
